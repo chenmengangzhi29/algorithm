@@ -23,7 +23,7 @@ int main(){
     }
 
     struct sockaddr_in serv_addr, clie_addr;
-    socklen_t clie_addr_len, clie_ip_len;
+    socklen_t clie_addr_len;
 
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(SERV_PORT);
