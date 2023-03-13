@@ -15,3 +15,8 @@ clean:
 	-rm -rf $(obj) a.out
 
 .PHONY: clean ALL
+
+git:
+	@git add .
+	@git commit -m "add system_program thread"
+	@git push orgin master
