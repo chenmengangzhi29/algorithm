@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add system_program thread"
+	@git commit -m "add 系统编程笔记"
 	@git push origin master
