@@ -19,4 +19,4 @@ clean:
 git:
 	@git add .
 	@git commit -m "add system_program thread"
-	@git push orgin master
+	@git push origin master
