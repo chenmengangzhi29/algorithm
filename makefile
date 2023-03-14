@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add 系统编程笔记"
+	@git commit -m "add pthread_join,pthread_cancel"
 	@git push origin master

@@ -1,5 +1,7 @@
 src = $(wildcard *.c)
 target = $(patsubst %.c, %, $(src))
+
+
 	
 ALL:$(target)
 
@@ -9,3 +11,5 @@ ALL:$(target)
 clean:
 	-rm -rf $(target)
 .PHONY: clean ALL
+
+
