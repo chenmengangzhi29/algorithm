@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add pthread_join,pthread_cancel"
+	@git commit -m "add pthread_detach,pthread_attr"
 	@git push origin master
