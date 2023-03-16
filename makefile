@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add pthread_sync(consumer, semaphore)"
+	@git commit -m "add process fork"
 	@git push origin master
