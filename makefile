@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add pthread_sync(mutex, rwlcok, cond)"
+	@git commit -m "add pthread_sync(consumer, semaphore)"
 	@git push origin master
