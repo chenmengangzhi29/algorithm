@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add process fork"
+	@git commit -m "add process wait and waitpid, add IPC pipe, modify README"
 	@git push origin master
