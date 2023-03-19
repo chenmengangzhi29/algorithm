@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add lswc and pipe_brother"
+	@git commit -m "add name pipe and mmap"
 	@git push origin master

@@ -23,10 +23,19 @@ kill()
 int pipe(int fd[2])	
 ```
 - namedpipe
+```shell
+mkfifo
+open(fifo,O_RDONLY)
+open(fifo.O_WRONLY)
+```
+- mmap(shared memory)
+```shell
+void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
+int munmap(void *addr, size_t length);
+```
 - semaphore
 - messagequeue
 - signal
-- shared memory
 - socket
 
 ### thread
