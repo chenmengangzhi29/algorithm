@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add database_program(BRAC.sql)"
+	@git commit -m "update BRAC.sql and RBAC.jpg"
 	@git push origin master
