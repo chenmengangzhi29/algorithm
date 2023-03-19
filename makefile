@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "update BRAC's README.md"
+	@git commit -m "complete singleton.hpp "
 	@git push origin master
