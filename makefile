@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add name pipe and mmap"
+	@git commit -m "add database_program(BRAC.sql)"
 	@git push origin master
