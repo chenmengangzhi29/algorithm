@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "complete singleton.hpp "
+	@git commit -m "add process(exec) "
 	@git push origin master
