@@ -1,5 +1,24 @@
 #code repository 
 ## network programming
+###socket
+```shell
+htonl(local IP to network);
+htons(local port to network);
+ntohl(network IP to local);
+ntohs(network port to local);
+
+int inet_pton(int af, const char *src, void *dst);<local string IP to net>
+const char *inet_ntop(int af, const void *src, char *dst, socklen_t size);
+
+int socket<int domain, int type, int protocol);
+int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+int listen(int sockfd, int backlog);
+int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+
+
+```
+
 ## design patterns
 - singleton
 ## system programming

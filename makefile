@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add sig_catch_child.c and add daemon.c"
+	@git commit -m "update README.md"
 	@git push origin master
