@@ -17,6 +17,10 @@ WIFSIGNALED(status) -> WTERMSIG(status)
 pid_t waitpid(pid_t pid, int *status, int options)
 exit()
 kill()
+
+[session,daemon]
+pid_t getsid(pid_t pid);
+pid_t setsig(void);
 ```
 ### InterProcess Communication
 - pipe
@@ -40,6 +44,8 @@ ftruncate
 int kill (pid_t pid, int signum);
 unsigned int alarm(unsigned int seconds);
 int setitimer(int which, const struct itimerval *new_value, struct itimerval *old_value);
+int raise(int sig);
+void abort(void);
 
 sigset_t set;
 sigemptyset(sigset_t *set);

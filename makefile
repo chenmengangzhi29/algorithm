@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "update mmap and add signal "
+	@git commit -m "add sig_catch_child.c and add daemon.c"
 	@git push origin master
