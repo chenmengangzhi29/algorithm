@@ -1,6 +1,7 @@
 #code repository 
 ## network programming
 ## design patterns
+- singleton
 ## system programming
 
 ###Process
@@ -32,10 +33,28 @@ open(fifo.O_WRONLY)
 ```shell
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 int munmap(void *addr, size_t length);
+ftruncate
+```
+- signal
+```shell
+int kill (pid_t pid, int signum);
+unsigned int alarm(unsigned int seconds);
+int setitimer(int which, const struct itimerval *new_value, struct itimerval *old_value);
+
+sigset_t set;
+sigemptyset(sigset_t *set);
+sigfillset(sigset_t *set);
+sigaddset(sigset_t *set, int signum);
+sigdelset(sigset_t *set, int signum);
+sigismember(const sigset_t *set, int signum);
+int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
+int sigpending(sigset_t *set);
+
+sighandler_t signal(int signum, sighandler_t handler);
+int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
 ```
 - semaphore
 - messagequeue
-- signal
 - socket
 
 ### thread

@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add process(exec) "
+	@git commit -m "update mmap and add signal "
 	@git push origin master
