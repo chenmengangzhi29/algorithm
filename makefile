@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "update README.md"
+	@git commit -m "add error wrap"
 	@git push origin master
