@@ -12,6 +12,6 @@ int Close(int fd);
 ssize_t Readn(int fd, void *vptr, size_t n);
 ssize_t Writen(int fd, const void *vptr, size_t n);
 ssize_t my_read(int fd, char *ptr);
-ssize_t Readling(int fd, void *vptr, size_t maxlen);
+ssize_t Readline(int fd, void *vptr, size_t maxlen);
 
 #endif
