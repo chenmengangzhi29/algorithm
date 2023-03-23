@@ -1,7 +1,7 @@
-#code repository 
+# code repository 
 ## network programming
-###socket
-```shell
+### socket
+```c
 htonl(local IP to network);
 htons(local port to network);
 ntohl(network IP to local);
@@ -19,8 +19,8 @@ int setsockopt(lfd, SOL_SOKCET, SO_REUSERADDR, (void *)&opt, sizeof(opt));
 int close(int fd);
 int shutdown(int sockfd, int how);
 ```
-###select
-```shell
+### select
+```c
 int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
 
 void FD_CLR(int fd, fd_set *set);
@@ -28,13 +28,19 @@ int FD_ISSET(int fd, fd_set *set);
 void FD_SET(int fd, fd_set *set);
 void FD_ZERO(fd_set *set);
 ```
+### poll
+```c
+int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+```
+### epoll
+
 
 ## design patterns
 - singleton
 ## system programming
 
-###Process
-```shell
+### Process
+```c
 pid_t fork(void)
 getpid()
 getppid()
@@ -53,23 +59,23 @@ pid_t setsig(void);
 ```
 ### InterProcess Communication
 - pipe
-```shell
+```c
 int pipe(int fd[2])	
 ```
 - namedpipe
-```shell
+```c
 mkfifo
 open(fifo,O_RDONLY)
 open(fifo.O_WRONLY)
 ```
 - mmap(shared memory)
-```shell
+```c
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);
 int munmap(void *addr, size_t length);
 ftruncate
 ```
 - signal
-```shell
+```c
 int kill (pid_t pid, int signum);
 unsigned int alarm(unsigned int seconds);
 int setitimer(int which, const struct itimerval *new_value, struct itimerval *old_value);
@@ -93,7 +99,7 @@ int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)
 - socket
 
 ### thread
-```shell
+```c
 pthread_t pthread_self(void)
 int pthread_create(pthread_t *tid, const pthread_attr_t *attr, void*(*start_rountn)(void *), void *arg)
 void pthread_exit(void *retval)
@@ -103,7 +109,7 @@ int pthtead_detach(pthread_t thread)
 ```
 ### thread synchronication
 - mutex
-```shell
+```c
 pthread_mutex_init
 pthread_mutex_destory
 pthread_mutex_lock
@@ -111,7 +117,7 @@ pthread_mutex_trylock
 pthread_mutex_unlock
 ```
 - rwlock
-```shell
+```c
 pthread_rwlock_init
 pthread_rwlock_rdlock
 pthread_rwlock_wrlock
@@ -119,7 +125,7 @@ pthread_rwlock_unlock
 pthread_rwlock_destroy
 ```
 - cond
-```shell
+```c
 pthread_cond_init
 pthread_cond_destroy
 pthread_cond_wait
@@ -128,7 +134,7 @@ pthread_cond_signal
 pthread_cond_broadcast
 ```
 - semaphore
-```shell
+```c
 sem_init
 sem_destroy
 sem_wait

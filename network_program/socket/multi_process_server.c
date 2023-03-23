@@ -5,7 +5,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include "wrap.h"
+#include "../wrap.h"
 #include <arpa/inet.h>
 #include <signal.h>
 #include <sys/wait.h>

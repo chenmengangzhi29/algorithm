@@ -5,7 +5,7 @@
 #include <sys/select.h>
 #include <arpa/inet.h>
 #include <ctype.h>
-#include "wrap.h"
+#include "../wrap.h"
 
 #define SERV_PORT 6666
 

@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <ctype.h>
 
-#include "wrap.h"
+#include "../wrap.h"
 
 #define SERV_PORT 6666
 

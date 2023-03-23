@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add select"
+	@git commit -m "add poll and epoll"
 	@git push origin master
