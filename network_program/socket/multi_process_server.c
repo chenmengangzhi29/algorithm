@@ -4,10 +4,19 @@
 #include <errno.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include "wrap.h"
 #include <arpa/inet.h>
+#include <signal.h>
+#include <sys/wait.h>
 #include <ctype.h>
-#define SRV_PORT 8080
+#define SRV_PORT 9999
+
+void catch_child(int signum)
+{
+    while((waitpid(0, NULL, WNOHANG)) > 0);
+    return;
+}
 
 int main(int argc, char *argv[])
 {
@@ -32,7 +41,7 @@ int main(int argc, char *argv[])
 	Listen(lfd, 128);
 
 	clt_addr_len = sizeof(clt_addr);
-
+    while(1){
 		cfd = Accept(lfd, (struct sockaddr *)&clt_addr, &clt_addr_len);
 
 		pid = fork();
@@ -40,13 +49,22 @@ int main(int argc, char *argv[])
 			perr_exit("fork error");
 		} else if(pid == 0) {
 			close(lfd);
+            break;
 		} else {
-			close(lfd);
-			close(cfd);
-			while(1);
-			return 0;
-		}
+            struct sigaction act;
 
+            act.sa_handler = catch_child;
+            sigemptyset(&act.sa_mask);
+            act.sa_flags = 0;
+            
+            ret = sigaction(SIGCHLD, &act, NULL);
+            if(ret != 0){
+                perr_exit("sigaction error");
+            }
+			close(cfd);
+            continue;
+		}
+    }
 	if(pid == 0){
 		for(;;){
 			ret = Read(cfd, buf, sizeof(buf));

@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 #define SERV_IP "127.0.0.1"
-#define SERV_PORT 8080
+#define SERV_PORT 8000
 
 void sys_err(const char* msg){
     perror(msg);
