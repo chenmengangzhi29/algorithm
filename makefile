@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add multi thread server"
+	@git commit -m "add select"
 	@git push origin master

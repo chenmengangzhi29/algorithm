@@ -15,8 +15,18 @@ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 int listen(int sockfd, int backlog);
 int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+int setsockopt(lfd, SOL_SOKCET, SO_REUSERADDR, (void *)&opt, sizeof(opt));
+int close(int fd);
+int shutdown(int sockfd, int how);
+```
+###select
+```shell
+int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
 
-
+void FD_CLR(int fd, fd_set *set);
+int FD_ISSET(int fd, fd_set *set);
+void FD_SET(int fd, fd_set *set);
+void FD_ZERO(fd_set *set);
 ```
 
 ## design patterns
