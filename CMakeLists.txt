@@ -7,10 +7,13 @@ set(
     -g"
 )
 
-project(epoll_client_socket_ET_LT)
-project(epoll_server_socket_ET_LT)
+project(client_socket_ET_LT)
+project(erver_socket_ET_LT)
+project(no_block_epoll)
 
-add_executable(epoll_client_socket_ET_LT 
+add_executable(client_socket_ET_LT 
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/epoll/client_socket_ET_LT.c)
-add_executable(epoll_server_socket_ET_LT
-    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/epoll/server_socket_ET_LT.c)   
+add_executable(server_socket_ET_LT
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/epoll/server_socket_ET_LT.c) 
+add_executable(no_block_epoll
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/epoll/no_block_epoll.c)  

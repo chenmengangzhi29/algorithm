@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add CMakeLists.txt"
+	@git commit -m "add no block ET epoll"
 	@git push origin master
 
 compile:

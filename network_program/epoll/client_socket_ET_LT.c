@@ -7,7 +7,7 @@
 #include <string.h>
 
 #define MAXLINE 10
-#define SERV_PORT 9000
+#define SERV_PORT 8000
 
 int main(int argc, char *argv[])
 {
