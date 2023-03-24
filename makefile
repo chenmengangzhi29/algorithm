@@ -18,5 +18,5 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add poll and epoll"
+	@git commit -m "add epoll's ET and LT with pipe and socket"
 	@git push origin master

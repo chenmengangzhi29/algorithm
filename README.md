@@ -33,6 +33,11 @@ void FD_ZERO(fd_set *set);
 int poll(struct pollfd *fds, nfds_t nfds, int timeout);
 ```
 ### epoll
+```c
+int epoll_create(int size);
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout);
+```
 
 
 ## design patterns
