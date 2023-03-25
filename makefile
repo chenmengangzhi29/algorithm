@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "update README.md"
+	@git commit -m "add epoll reactor"
 	@git push origin master
 
 compile:
