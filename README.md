@@ -115,6 +115,7 @@ void pthread_exit(void *retval)
 int pthread_join(pthread_t thread, void **retval)
 int pthread_cancel(pthrad_t thread)
 int pthtead_detach(pthread_t thread)
+int pthread_kill(pthread_t thread, int sig);
 ```
 ### thread synchronication
 - mutex

@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add epoll reactor"
+	@git commit -m "add thread pool"
 	@git push origin master
 
 compile:
