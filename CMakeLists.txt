@@ -14,6 +14,8 @@ project(reactor_epoll)
 project(threadpool)
 project(udp_server)
 project(udp_client)
+project(local_socket_server)
+project(local_socket_client)
 
 add_executable(client_socket_ET_LT 
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/epoll/client_socket_ET_LT.c)
@@ -29,3 +31,9 @@ add_executable(udp_server
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/udp/server.c)
 add_executable(udp_client
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/udp/client.c)
+add_executable(local_socket_server
+    ${CMAKE_CURRENT_SOURCE_DIR}/system_program/IPC/local_socket_server.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/wrap.c)
+add_executable(local_socket_client
+    ${CMAKE_CURRENT_SOURCE_DIR}/system_program/IPC/local_socket_client.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/wrap.c)

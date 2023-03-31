@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add udp"
+	@git commit -m "add local socket"
 	@git push origin master
 
 compile:

@@ -1,6 +1,6 @@
 # code repository 
 ## network programming
-### socket
+### network socket
 ```c
 htonl(local IP to network);
 htons(local port to network);
@@ -43,8 +43,10 @@ flg |= o_NONBLOCK;
 fcntl(cfd, F_SETFL, flg);
 ```
 ### udp
+```c
 ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr *src_addr, socklen_t *addrlen);
 ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
+```
 
 ## design patterns
 - singleton
@@ -107,7 +109,8 @@ int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)
 ```
 - semaphore
 - messagequeue
-- socket
+- local socket
+
 
 ### thread
 ```c
