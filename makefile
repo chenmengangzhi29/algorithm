@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add thread pool"
+	@git commit -m "add udp"
 	@git push origin master
 
 compile:
