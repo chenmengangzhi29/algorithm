@@ -48,6 +48,23 @@ ssize_t recvfrom(int sockfd, void *buf, size_t len, int flags, struct sockaddr *
 ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
 ```
 
+### libevent
+```c
+struct event_base *event_base_new(void);
+struct event *event_new(struct event_base *base, evutil_socket_t fd, short what, event_callback_fn cb, void *arg);
+typedef void (*event_callback_fn)(evutil_socket_t fd, short, void *);
+struct bufferevent *bufferevent_socket_new(struct event_base *base, evutil_socket_t fd, enum bufferevent_options options);
+int event_add(struct event *ev, const struct timeval *tv);
+int event_base_dispatch(struct event_base *base);
+void event_base_free(struct event_base *base);
+
+int event_base_loopexit(struct event_base *base, const struct timeval *tv);
+int event_base_loopbreak(struct event_base *base);
+const char **event_get_supported_methods(void);
+const char *event_base_get_method(const struct event_base *base);
+int event_reinit(struct event_base *base);//使用该函数后，父创建的base才能在子进程中生效。
+```
+
 ## design patterns
 - singleton
 ## system programming

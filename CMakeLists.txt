@@ -37,3 +37,25 @@ add_executable(local_socket_server
 add_executable(local_socket_client
     ${CMAKE_CURRENT_SOURCE_DIR}/system_program/IPC/local_socket_client.c
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/wrap.c)
+
+
+## libevent
+project(get_supported_methods)
+add_executable(get_supported_methods
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/get_supported_methods.c) 
+target_link_libraries(get_supported_methods libevent.so)
+
+project(base_get_method)
+add_executable(base_get_method
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/base_get_method.c) 
+target_link_libraries(base_get_method libevent.so)
+
+project(read_fifo)
+add_executable(read_fifo
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/read_fifo.c) 
+target_link_libraries(read_fifo libevent.so)
+
+project(write_fifo)
+add_executable(write_fifo
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/write_fifo.c) 
+target_link_libraries(write_fifo libevent.so)
