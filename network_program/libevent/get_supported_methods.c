@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     int i;
 
-    struct event_base *base = event_base_new();
+    //struct event_base *base = event_base_new();
 
     const char **buf;
 

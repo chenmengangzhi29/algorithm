@@ -59,3 +59,13 @@ project(write_fifo)
 add_executable(write_fifo
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/write_fifo.c) 
 target_link_libraries(write_fifo libevent.so)
+
+project(bufferevent_server)
+add_executable(bufferevent_server
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/bufferevent_server.c) 
+target_link_libraries(bufferevent_server libevent.so)
+
+project(bufferevent_client)
+add_executable(bufferevent_client
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/bufferevent_client.c) 
+target_link_libraries(bufferevent_client libevent.so)

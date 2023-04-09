@@ -50,10 +50,10 @@ ssize_t sendto(int sockfd, const void *buf, size_t len, int flags, const struct 
 
 ### libevent
 ```c
+//event
 struct event_base *event_base_new(void);
 struct event *event_new(struct event_base *base, evutil_socket_t fd, short what, event_callback_fn cb, void *arg);
 typedef void (*event_callback_fn)(evutil_socket_t fd, short, void *);
-struct bufferevent *bufferevent_socket_new(struct event_base *base, evutil_socket_t fd, enum bufferevent_options options);
 int event_add(struct event *ev, const struct timeval *tv);
 int event_base_dispatch(struct event_base *base);
 void event_base_free(struct event_base *base);
@@ -63,6 +63,20 @@ int event_base_loopbreak(struct event_base *base);
 const char **event_get_supported_methods(void);
 const char *event_base_get_method(const struct event_base *base);
 int event_reinit(struct event_base *base);//使用该函数后，父创建的base才能在子进程中生效。
+
+//bufferevent
+struct bufferevent *bufferevent_socket_new(struct event_base *base, evutil_socket_t fd, enum bufferevent_options options);
+void bufferevent_socket_free(struct bufferevent *ev);
+void bufferevent_setcb(struct bufferevent* bufev, bufferevent_data_cb readcb, bufferevent_data_cb writecb, bufferevent_event_cb eventcb, void *cbarg);
+typedef void (*bufferevent_data_cb)(struct bufferevent *bev, void *ctx);
+typedef void (*bufferevent_event_cb)(struct bufferevent *bev, short events, void *ctx);
+size_t bufferevent_read(struct bufferevent *bev, void *buf, size_t bufsize);
+int bufferevent_write(struct bufferevent *bufev, const void *data, size_t size);
+void bufferevent_enable(struct bufferevent *bufev, short events);
+
+int bufferevent_socket_connect(struct bufferevent *bev, struct sockaddr *address, int addrlen);
+struct evconnlistener *evconnlistener_new_bind(struct event_base *base, evconnlistener_cb cb, void *ptr, unsigned flags, int backlog, const struct sockaddr *sa, int socklen);
+void evconnlistener_free(struct evconnlistener *lev);
 ```
 
 ## design patterns
