@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add bufferevent"
+	@git commit -m "add web_server code"
 	@git push origin master
 
 compile:
