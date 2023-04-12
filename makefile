@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add web_server code"
+	@git commit -m "update web_server server.c"
 	@git push origin master
 
 compile:

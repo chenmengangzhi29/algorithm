@@ -58,3 +58,110 @@ int init_listen_fd(int port, int epfd)
     return lfd;
 }
 
+void do_accept(int lfd, int epfd)
+{
+    struct sockaddr_in clt_addr;
+    socklen_t clt_addr_len = sizeof(clt_addr);
+
+    int cfd = accept(lfd, (struct sockaddr*)&clt_addr, &clt_addr_len);
+    if(cfd == -1) {
+        perror("accept error");
+        exit(1);
+    }
+
+    // 打印客户端IP+port
+    char client_ip[64] = {0};
+    printf("New Client IP: %s, Port: %d, cfd = %d\n",
+            inet_ntop(AF_INET, &clt_addr.sin_addr.s_addr, client_ip, sizeof(client_ip)),
+            ntohs(clt_addr.sin_port), cfd);
+
+    // 设置cfd非阻塞
+    int flag = fcntl(cfd, F_GETFL);
+    flag |= O_NONBLOCK;
+    fcntl(cfd, F_SETFL, flag);
+
+    // 将新节点cfd挂到epoll监听树上
+    struct epoll_event ev;
+    ev.data.fd = cfd;
+
+    //边沿非阻塞模式
+    ev.events = EPOLLIN | EPOLLET;
+
+    int ret = epoll_ctl(epfd, EPOLL_CTL_ADD, cfd, &ev);
+    if(ret == -1){
+        perror("epoll_ctl add cfd error");
+        exit(1);
+    }
+}
+
+void do_read(int cfd, int epfd)
+{
+    // read cfd 小 -- 大 write回
+    // 读取一行http协议， 拆分， 获取get文件名 协议号
+}
+
+void epoll_run(int port)
+{
+    int i = 0;
+    struct epoll_event all_events[MAXSIZE];
+
+    //创建一个epoll监听树根
+    int epfd = epoll_create(MAXSIZE);
+    if(epfd == -1){
+        perror("epoll_create error");
+        exit(1);
+    }
+
+    //创建lfd, 并添加至监听树
+    int lfd = init_listen_fd(port, epfd);
+
+    while(1) {
+        //监听节点对应事件
+        int ret = epoll_wait(epfd, all_events, MAXSIZE, -1);
+        if(ret == -1) {
+            perror("epoll_wait error");
+            exit(1);
+        }
+
+        for(i = 0; i < ret; ++i) {
+            //只处理读事件，其他事件默认不处理
+            struct epoll_event *pev = &all_events[i];
+
+            //不是读事件
+            if(!(pev->events & EPOLLIN)){
+                continue;
+            }
+            //接受连接请求
+            if(pev->data.fd == lfd){
+                do_accept(lfd, epfd);
+            }else{//读数据
+                do_read(pev->data.fd, epfd);
+
+            }
+        }
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    // 命令行参数获取 端口 和 server提供的目录
+    if(argc < 3)
+    {
+        printf("./server port path\n");
+    }
+
+    //获取用户输入的端口
+    int port = atoi(argv[1]);
+
+    //改变进程工作目录
+    int ret = chdir(argv[2]);
+    if(ret != 0){
+        perror("chdir error");
+        exit(1);
+    }
+
+    // 启动 epoll 监听
+    epoll_run(port);
+
+    return 0;
+}
