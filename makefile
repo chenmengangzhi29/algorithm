@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "finish web_server server.c"
+	@git commit -m "add web_server libevent"
 	@git push origin master
 
 compile:

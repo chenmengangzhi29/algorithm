@@ -257,8 +257,9 @@ void send_response_head(int cfd, int no, char *disp, char *type, int len)
 {
     char buf[1024] = {0};
     sprintf(buf, "HTTP/1.1 %d %s\r\n", no, disp);
-    sprintf(buf+strlen(buf), "%s\r\n", type);
+    sprintf(buf+strlen(buf), "Content-Type:%s\r\n", type);
     sprintf(buf+strlen(buf), "Content-Length:%d\r\n", len);
+    printf("%s\n", buf);
     send(cfd, buf, strlen(buf), 0);
     send(cfd, "\r\n", 2, 0);
 }
@@ -270,7 +271,8 @@ void send_dir(int cfd, const char *dirname){
     //拼一个html页面<table></table>
     char buf[4096] = {0};
 
-    sprintf(buf, "<html><head><title>目录名：%s</title></head>", dirname);
+    sprintf(buf, "<!DOCTYPE html>");
+    sprintf(buf+strlen(buf), "<html><head><title>目录名:%s</title></head>", dirname);
     sprintf(buf+strlen(buf), "<body><h1>当前目录: %s</h1><table>", dirname);
 
     char enstr[1024] = {0};
@@ -502,7 +504,8 @@ int main(int argc, char *argv[])
     // 命令行参数获取 端口 和 server提供的目录
     if(argc < 3)
     {
-        printf("./server port path\n");
+        printf("error : ./server port path\n");
+        return 0;
     }
 
     //获取用户输入的端口
