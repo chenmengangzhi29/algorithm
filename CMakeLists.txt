@@ -69,3 +69,8 @@ project(bufferevent_client)
 add_executable(bufferevent_client
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/libevent/bufferevent_client.c) 
 target_link_libraries(bufferevent_client libevent.so)
+
+## web_server
+project(epoll_web_server)
+add_executable(epoll_web_server
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/web_server/epoll/server.c)
