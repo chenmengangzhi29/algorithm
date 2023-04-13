@@ -7,6 +7,8 @@ set(
     -g"
 )
 
+# network program
+
 project(client_socket_ET_LT)
 project(erver_socket_ET_LT)
 project(no_block_epoll)
@@ -74,3 +76,11 @@ target_link_libraries(bufferevent_client libevent.so)
 project(epoll_web_server)
 add_executable(epoll_web_server
     ${CMAKE_CURRENT_SOURCE_DIR}/network_program/web_server/epoll/server.c)
+
+project(libevent_web_server)
+add_executable(libevent_web_server
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/web_server/libevent/server.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/web_server/libevent/libevent_http.c)
+target_include_directories(libevent_web_server PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/network_program/web_server/libevent)
+target_link_libraries(libevent_web_server libevent.so)

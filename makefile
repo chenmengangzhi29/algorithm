@@ -20,7 +20,7 @@ clean:
 
 git:
 	@git add .
-	@git commit -m "add web_server libevent"
+	@git commit -m "finish network program learning"
 	@git push origin master
 
 compile:
